@@ -1,0 +1,178 @@
+/* BASIC RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  background: black;
+  color: white;
+  height: 100vh;
+}
+
+/* SCENES */
+.scene {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.scene.active {
+  display: flex;
+}
+
+/* BACKGROUND IMAGE */
+.bg-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  object-fit: contain;
+}
+
+/* DARK CINEMATIC OVERLAY */
+.scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+/* CONTENT ON TOP */
+.content {
+  position: relative;
+  z-index: 3;
+  max-width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* HEADINGS AND PARAGRAPHS */
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff1e56;
+}
+
+/* FLASH EFFECT */
+.flash {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* FALLING ROSES */
+.rose {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* RING BOX */
+.ring-box {
+  width: 150px;
+  height: 120px;
+  background: #8b0000;
+  border-radius: 10px;
+  margin: 20px auto;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  z-index: 5;
+}
+
+.ring-box.open {
+  transform: rotateX(-120deg);
+}
+
+.ring-lid {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  background: #a52a2a;
+  top: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.ring {
+  position: absolute;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  border: 4px solid gold;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 20px gold;
+}
+
+/* FIREWORKS CANVAS */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+  .content p {
+    font-size: 1rem;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
