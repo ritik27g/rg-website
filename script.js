@@ -1,14 +1,15 @@
 let scenes = document.querySelectorAll(".scene");
 let current = 0;
+
 function startStory() {
   const music = document.getElementById("bgMusic");
   music.play().catch(() => {});
   nextScene();
 }
 
-window.startStory = startStory;
-
 function nextScene() {
+  if (current >= scenes.length - 1) return;
+
   flashEffect();
   scenes[current].classList.remove("active");
   current++;
@@ -88,10 +89,16 @@ function celebrate() {
   }, 2000);
 }
 
+/* FIREWORKS */
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
 let particles = [];
 
@@ -102,8 +109,7 @@ function startFireworks() {
         x: canvas.width / 2,
         y: canvas.height / 2,
         angle: Math.random() * 2 * Math.PI,
-        speed: Math.random() * 5,
-        radius: 2
+        speed: Math.random() * 5
       });
     }
   }, 1000);
@@ -114,11 +120,11 @@ function animate() {
   ctx.fillStyle = "rgba(0,0,0,0.2)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  particles.forEach((p, index) => {
+  particles.forEach((p) => {
     p.x += Math.cos(p.angle) * p.speed;
     p.y += Math.sin(p.angle) * p.speed;
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+    ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);
     ctx.fillStyle = "gold";
     ctx.fill();
   });
