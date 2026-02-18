@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Story 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music/music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="flash"></div>
+<canvas id="fireworks"></canvas>
+
+<!-- INTRO -->
+<section class="scene active">
+  <div class="content">
+    <h1>For My Forever ❤️</h1>
+    <p>Click to begin our story...</p>
+    <button onclick="startStory()">Begin ✨</button>
+  </div>
+</section>
+
+<!-- SCENE 1 -->
+<section class="scene">
+  <img src="images/bus.jpg" class="bg-img">
+  <div class="content">
+    <h1 class="line">Our Silly Bus Rides 🚌</h1>
+    <p class="line">Those chaotic, loud, happiest rides.</p>
+    <p class="line">Every bump in the road made us laugh harder.</p>
+    <button onclick="nextScene()">Next ➜</button>
+  </div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <img src="images/icecream.jpg" class="bg-img">
+  <div class="content">
+    <h1 class="line">Impromptu Ice Cream Dates 🍦</h1>
+    <p class="line">New flavours. Same happiness.</p>
+    <p class="line">Every bite tasted better with you.</p>
+    <button onclick="nextScene()">Next ➜</button>
+  </div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <img src="images/movie.jpg" class="bg-img">
+  <div class="content">
+    <h1 class="line">Movies That Bind Us 🎬</h1>
+    <p class="line">Theatres or virtual nights.</p>
+    <p class="line">No matter where, it was always us.</p>
+    <button onclick="nextScene()">Next ➜</button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="scene">
+  <div class="content">
+    <h1 id="countdownText">I have something important to ask you…</h1>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
